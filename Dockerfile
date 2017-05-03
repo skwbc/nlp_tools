@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Shota Kawabuchi <shota.kawabuchi+git@gmail.com>
 
 RUN set -x && \
+  echo "nameserver 8.8.8.8" >> /etc/resolv.conf && \
   apt-get update && \
   apt-get install -y \
     build-essential \
@@ -13,7 +14,7 @@ RUN set -x && \
     mecab \
     mecab-ipadic-utf8 \
     vim \
-    wget \
+    wget && \
   apt-get clean && \
   wget https://repo.continuum.io/miniconda/Miniconda3-4.3.11-Linux-x86_64.sh && \
   bash Miniconda3-4.3.11-Linux-x86_64.sh -b && \
